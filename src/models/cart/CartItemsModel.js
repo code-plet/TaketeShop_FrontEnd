@@ -8,7 +8,7 @@ class CartItemsModel{
         this.name = name;
         this.quantity = quantity;
         this.price = price;
-        this.discount = discount;
+        this.discount = discount? discount : 0;
         this.discountPrice = price - (discount / 100).toFixed(2) * price;
         this.images = images;
         this.createTime = createTime;

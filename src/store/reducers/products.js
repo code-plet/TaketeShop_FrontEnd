@@ -1,7 +1,3 @@
-import {
-  DEFAULT_PRODUCT,
-  PRODUCT_ITEMS_DUMMY_DATA,
-} from '../../dummy_database/dummy-data';
 import ProductModel from '../../models/product/ProductModel';
 import {
   CREATE_PRODUCT,
@@ -24,9 +20,26 @@ import {
   UPDATE_PAGE,
   UPDATE_PRODUCTS,
 } from '../actions/products';
-
+const NO_IMAGE = 'https://res.cloudinary.com/taketeshop/image/upload/v1653878104/TaketeShop/Default_Images/istockphoto-1216251206-170667a_i3yvem.jpg';
 const initialState = {
-  currentProduct: DEFAULT_PRODUCT,
+  currentProduct: {
+    productID: 0,
+    categoryID: 0,
+    unitID: 0,
+    userID: 0,
+    name: 'Lỗi sản phẩm',
+    category: 'Lỗi ngành hàng',
+    description: 'Lỗi đánh giá sản phẩm',
+    price: 99999,
+    quantity: 100,
+    unit: 0,
+    discount: 0,
+    liked: false,
+    sold: 0,
+    image: [NO_IMAGE],
+    createTime: new Date(),
+    updateTime: new Date(),
+  },
   availableProducts: [],
   searchedProducts: [],
   discountProducts: [],
@@ -44,11 +57,11 @@ export default (state = initialState, action) => {
         ...state,
         availableProducts: action.products,
       };
-      case SET_UNIT:
-        return {
-          ...state,
-          units: action.units,
-        };
+    case SET_UNIT:
+      return {
+        ...state,
+        units: action.units,
+      };
     case SET_PRODUCTS_WITH_SEARCHKEY:
       return {
         ...state,
@@ -57,7 +70,9 @@ export default (state = initialState, action) => {
     case UPDATE_PRODUCTS:
       console.log(':::productLength: ', action.products.length);
       const arr = [];
-      [...state.availableProducts, action.products].map(item => arr.push(item.productID));
+      [...state.availableProducts, action.products].map(item =>
+        arr.push(item.productID),
+      );
       action.products.map(item => arr.push(item.productID));
       console.log(arr);
 

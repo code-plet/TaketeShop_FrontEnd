@@ -19,8 +19,8 @@ function OrderItem(props) {
           <View style={styles.detailContainer}>
             <Text style={styles.quantity}>x{props.item.quantity}</Text>
             <View style={styles.priceContainer}>
-              <Text style={styles.discount}>{props.item.price}đ</Text>
-              <Text style={styles.price}>  {props.item.discountPrice}đ</Text>
+              <Text style={styles.discount}>{props.item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</Text>
+              <Text style={styles.price}>  {props.item.discountPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</Text>
             </View>
           </View>
         </View>

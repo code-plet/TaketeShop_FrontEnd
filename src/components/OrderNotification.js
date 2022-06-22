@@ -39,7 +39,7 @@ function OrderNotification(props) {
           </Text>
 
           <View style={styles.buttonContainer}>
-            <Text style={styles.textPrice}>{props.item.totalCost} đ</Text>
+            <Text style={styles.textPrice}>{props.item.totalCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} đ</Text>
             {props.item.status != 'WAITING' ? (
               <Button
                 style={styles.button}

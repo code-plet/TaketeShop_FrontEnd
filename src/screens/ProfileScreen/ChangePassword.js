@@ -12,7 +12,6 @@ function ChangePassword(props) {
   const [oldpass, setOldpass] = React.useState('');
   const [newpass, setNewpass] = React.useState('');
   const [confirmpass, setConfirmpass] = React.useState('');
-  const admin = useSelector(state => state.staff.admin);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const userID = useSelector(state => state.auth.userID);
@@ -77,14 +76,7 @@ function ChangePassword(props) {
           style={styles.button}
           color="#4F5160"
           labelStyle={{fontSize: 20}}
-          onPress={() => {
-            if (admin) {
-              dispatch(ListStaff.changePassword(userID, token, oldpass));
-              navigation.navigate('Profile');
-            } else {
-              ChangeButton();
-            }
-          }}>
+          onPress={ChangeButton}>
           Xác nhận
         </Button>
       </View>

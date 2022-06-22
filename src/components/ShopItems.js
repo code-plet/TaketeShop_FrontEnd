@@ -36,10 +36,10 @@ function ShopItems(props) {
                     ? props.item.name
                     : props.item.name.slice(0, 13) + '...'}
                 </Text>
-                <Text style={styles.textPrice}>{props.item.discountPrice}</Text>
+                <Text style={styles.textPrice}>{props.item.discountPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Text>
                 <View style={styles.discount}>
                   <Text style={styles.textTruePrice}>
-                    {props.item.price}/{props.item.unit}
+                    {props.item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}/{props.item.unit}
                   </Text>
                   <Text style={styles.textDiscount}>
                     {' '}
